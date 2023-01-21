@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div id="date">
+        <script>
+            function updateTime() {
+                let currentTime = new Date();
+                let hours = currentTime.getHours();
+                let minutes = currentTime.getMinutes() < 10 ? '0' + currentTime.getMinutes() : currentTime.getMinutes();
+                let seconds = currentTime.getSeconds() < 10 ? '0' + currentTime.getSeconds() : currentTime.getSeconds();
+                let ampm = hours >= 12 ? 'PM' : 'AM';
+
+                document.getElementById('date').innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
+            }
+
+            setInterval(updateTime, 1000);
+        </script>
+    </div>
+    <div id="location"></div>
+    <div id="temp"></div>
+    <div id="weather"></div>
+    <div id="extremes">
+        <div id="max-temp"></div>
+        <div id="min-temp"></div>
+    </div>
+</body>
+</html>
