@@ -1,3 +1,5 @@
+const errorMessage = document.getElementById('error-message');
+
 async function getWeather(location) {
 
     let locationURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + location + '&units=imperial&appid=502754d1ea41ea0b58607d87003404a3';
@@ -14,7 +16,6 @@ async function getWeather(location) {
                 weatherDescription: data.weather[0].description,
                 max: Math.round(data.main.temp_max),
                 min: Math.round(data.main.temp_min),
-                time: getTime(data.timezone/3600, data.dt),
                 dataInfo: data
             }
         }
@@ -22,21 +23,12 @@ async function getWeather(location) {
         return undefined;
 
     } catch (error) {
+        errorMessage.style.visibility = 'visible';
         console.log("Error", error);
     }
 }
 
-function getTime(timeOffset, dt) {
-    const currentTime = new Date((timeOffset + dt) * 1000);
-    const hours = currentTime.getHours();
-    const minutes = currentTime.getMinutes() < 10 ? '0' + currentTime.getMinutes() : currentTime.getMinutes();
-    const seconds = currentTime.getSeconds() < 10 ? '0' + currentTime.getSeconds() : currentTime.getSeconds();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const timeFormat = (hours + ":" + minutes + ":" + seconds + " " + ampm);
-    return timeFormat;
-}
-
-async function changeText(location) {
+async function changeWeatherText(location) {
 
     const locationName = document.getElementById('location');
     const temp = document.getElementById('temp');
@@ -47,8 +39,9 @@ async function changeText(location) {
     let weatherData = await getWeather(location);
 
     if (weatherData === undefined) {
-        //show error case
         return;
+    } else {
+        errorMessage.style.visibility = 'hidden';
     }
 
     locationName.textContent = weatherData.name;
@@ -56,11 +49,18 @@ async function changeText(location) {
     weather.textContent = weatherData.weather;
     maxTemp.textContent = "H:" + weatherData.max;
     minTemp.textContent = "L:" + weatherData.min;
-
-    console.log(weatherData.dataInfo);
-    console.log(weatherData.time);
 }
 
-changeText('Elk Grove');
+function searchLocation() {
+    const form = document.getElementById('location-form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const location = (formData.get("location"));
+        changeWeatherText(location);
 
+    })
+}
+
+searchLocation();
 

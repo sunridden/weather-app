@@ -8,21 +8,11 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <div id="date">
-        <script>
-            function updateTime() {
-                let currentTime = new Date();
-                let hours = currentTime.getHours();
-                let minutes = currentTime.getMinutes() < 10 ? '0' + currentTime.getMinutes() : currentTime.getMinutes();
-                let seconds = currentTime.getSeconds() < 10 ? '0' + currentTime.getSeconds() : currentTime.getSeconds();
-                let ampm = hours >= 12 ? 'PM' : 'AM';
-
-                document.getElementById('date').innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
-            }
-
-            setInterval(updateTime, 1000);
-        </script>
-    </div>
+    <form id="location-form" method="post">
+        <label for="location"></label>
+        <input type="text" id="location" name="location" placeholder="Search for location" required>
+    </form>
+    <div id="error-message" style="visibility: hidden;">Location not found. Search must be in the form of a city, state, or country</div>
     <div id="location"></div>
     <div id="temp"></div>
     <div id="weather"></div>
