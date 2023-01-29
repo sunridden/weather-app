@@ -30,7 +30,7 @@ async function getWeather(location) {
 
 async function changeWeatherText(location) {
 
-    const locationName = document.getElementById('location');
+    const locationName = document.getElementById('location-name');
     const temp = document.getElementById('temp');
     const weather = document.getElementById('weather');
     const maxTemp = document.getElementById('max-temp');
@@ -43,9 +43,9 @@ async function changeWeatherText(location) {
     } else {
         errorMessage.style.visibility = 'hidden';
     }
-
+    
     locationName.textContent = weatherData.name;
-    temp.textContent = weatherData.temp + "°";
+    temp.textContent = weatherData.temp + "°F";
     weather.textContent = weatherData.weather;
     maxTemp.textContent = "H:" + weatherData.max;
     minTemp.textContent = "L:" + weatherData.min;
@@ -62,5 +62,6 @@ function searchLocation() {
     })
 }
 
+changeWeatherText("Elk Grove");
 searchLocation();
 

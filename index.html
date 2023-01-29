@@ -5,20 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
 <body>
+    <div class="weather-data">
+        <div id="location-name"></div>
+        <div id="temp"></div>
+        <div id="weather"></div>
+        <div id="extremes">
+            <div id="max-temp"></div>
+            <div id="min-temp"></div>
+        </div>
+    </div>
     <form id="location-form" method="post">
         <label for="location"></label>
         <input type="text" id="location" name="location" placeholder="Search for location" required>
     </form>
     <div id="error-message" style="visibility: hidden;">Location not found. Search must be in the form of a city, state, or country</div>
-    <div id="location"></div>
-    <div id="temp"></div>
-    <div id="weather"></div>
-    <div id="extremes">
-        <div id="max-temp"></div>
-        <div id="min-temp"></div>
-    </div>
 </body>
 </html>

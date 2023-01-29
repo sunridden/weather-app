@@ -1,0 +1,46 @@
+body {
+    background-color: #f9f9fa;
+    color: #2d8fd5;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.weather-data {
+    margin-top: 5%;
+    font-size: 3rem;
+}
+
+#temp {
+    font-size: 6rem;
+}
+
+#weather {
+    font-size: 2rem;
+}
+
+#extremes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+    font-size: 1.5rem;
+}
+
+#location-form {
+    margin: 20px;
+}
+
+#location-form input {
+    width: 15%;
+    min-width: 150px;
+    height: 30px;
+    border: thin solid #eceeef;
+    background-color: #cfd3d7;
+    border-radius: 3px;
+}
+
+@media (max-width: 400px) {
+    body {
+        background-color: red;
+    }
+}
