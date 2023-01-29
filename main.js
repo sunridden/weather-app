@@ -2,7 +2,7 @@ const errorMessage = document.getElementById('error-message');
 
 async function getWeather(location) {
 
-    let locationURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + location + '&units=imperial&appid=502754d1ea41ea0b58607d87003404a3';
+    let locationURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + location + '&units=imperial&appid=502754d1ea41ea0b58607d87003404a3';
     
     try {
         const response = await fetch(locationURL, {mode: 'cors'})
